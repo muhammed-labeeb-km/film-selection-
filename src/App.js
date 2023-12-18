@@ -38,6 +38,21 @@ const [forList,setList]=useState('all')
 
 const [movies,setMovies]=useState(arr)
 
+const [detail, setDetail] = useState({
+  title: '',
+  genre: '',
+  rating: '',
+  available: false, // Initial value for the 'available' field
+});
+
+const selectingAll = () => {
+  setMovies([
+    ...movies,
+    detail]
+  )
+};
+console.log(movies);
+
 
 const listAll = (e) =>{
   // console.log(e);
@@ -93,8 +108,8 @@ function onAct(e){
       <button className='btn-primary btn' id='first' onClick={clicked}>Heyy guys</button>
     <br />
       <div>
-      <Header onAct={onAct} forList={forList} />
-      <Adding/>
+      <Header onAct={onAct} forList={forList}  />
+      <Adding selectingAll={selectingAll} detail={detail} setDetail={setDetail}  movies={movies} setMovies={setMovies} />
       <Second movies={movies} listAll={listAll} deleting={deleting}/>
       </div>
       

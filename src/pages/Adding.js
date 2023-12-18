@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-function Adding() {
-  const [detail, setDetail] = useState({
-    title: '',
-    genre: '',
-    rating: '',
-    available: false, // Initial value for the 'available' field
-  });
+function Adding(props) {
+  
+
+    const {movies} = props
+    const {setDetail} = props
+    const {detail} = props
+    const {selectingAll}= props
 
   const takeval = (field, value) => {
     if (field === 'available') {
@@ -19,14 +19,12 @@ function Adding() {
       // For other fields, update normally
       setDetail({
         ...detail,
-        [field]: value,
+        [field]: value === 'non-available',
       });
     }
   };
 
-  const selectingAll = () => {
-    console.log(detail);
-  };
+  
 
   return (
     <div className='text-center'>
